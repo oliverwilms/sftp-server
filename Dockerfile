@@ -3,7 +3,7 @@ FROM alpine
 ENV SSH_USER=sftpuser
 ENV SSH_PASS=sftppass
 ENV ROOT_PASS=rootpass
-
+ADD sshd_config /etc/ssh/sshd_config
 RUN apk add --no-cache bash openssh rsyslog shadow
 RUN mkdir -m2755 /data
 RUN groupadd sftp_users
@@ -21,8 +21,8 @@ RUN mkdir -m2755 /data/oliver
 RUN mkdir -m2755 /data/oliver/dev
 RUN mkdir /data/oliver/upload
 RUN ssh-keygen -A
-RUN mv /etc/sshd_config /etc/ssh/sshd_config.old
-ADD sshd_config /etc/ssh/sshd_config
+#RUN mv /etc/sshd_config /etc/ssh/sshd_config.old
+#ADD sshd_config /etc/ssh/sshd_config
 #COPY sshd_config /etc/ssh/sshd_config
 
 RUN mkdir /etc/rsyslog.d
