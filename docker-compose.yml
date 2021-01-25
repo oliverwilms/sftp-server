@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  sftp:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    init: true
+    restart: always
+    ports: 
+      - 22
+    volumes:
+      - ./data:/data
