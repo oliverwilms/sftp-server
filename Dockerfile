@@ -21,9 +21,10 @@ RUN mkdir -m2755 /data/oliver
 RUN mkdir -m2755 /data/oliver/dev
 RUN mkdir /data/oliver/upload
 RUN ssh-keygen -A
+RUN mv /etc/sshd_config /etc/ssh/sshd_config.old
+ADD sshd_config /etc/ssh/sshd_config
+#COPY sshd_config /etc/ssh/sshd_config
 
-#ADD sshd_config /etc/ssh/sshd_config
-COPY sshd_config /etc/ssh/sshd_config
 RUN mkdir /etc/rsyslog.d
 ADD sftp.conf /etc/rsyslog.d/sftp.conf
 
